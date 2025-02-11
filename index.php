@@ -22,29 +22,30 @@ trait Calculator {
     }
 }
 
-class Rettangolo {
+class Rectangle{
     use Calculator;
-
-    private $base;
-    private $altezza;
-
-    public function __construct($base, $altezza) {
-        $this->base = $base;
-        $this->altezza = $altezza;
+    public $base;
+    public $height;
+    public function __construct($b,$h)
+    {
+        $this->base=$b;
+        $this->height= $h;
+    }
+    public function getSurfaceArea(){
+        return $this-> mul($this->base, this-> height);
+    }
+    public function getPerimeter(){
+        $sum= $this-> sum($this->base, $this->height);
+        $result= $this-> mul($sum,2);
+        return $result;
     }
 
-    public function calcolaArea() {
-        return $this->mul($this->base, $this->altezza);
-    }
-
-    public function calcolaPerimetro() {
-        return $this->sum($this->mul(2, $this->base), $this->mul(2, $this->altezza));
-    }
-
-    public function calcolaDiagonale() {
-        return $this->sqr($this->sum($this->mul($this->base, $this->base), $this->mul($this->altezza, $this->altezza)));
-    }
+public function getDiagonal(){
+    $baseSquare= $this-> base**2;
+    $heightSquare= $this->height**2;
+    $sum= $this->sum($baseSquare, $heightSquare);
+    $result=$this->sqr($sum);
+    return $result:
+        }
 }
-
-?>
-
+    
